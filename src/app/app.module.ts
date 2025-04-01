@@ -12,6 +12,7 @@ import {MainBannerComponent} from './component/main-banner/main-banner.component
 import {ProductComponent} from './component/product/product.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {NgImageSliderModule} from "ng-image-slider";
+import {RegisterComponent} from "./pages/regist/register.component";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {NgImageSliderModule} from "ng-image-slider";
     LoginComponent,
     HeaderComponent,
     MainBannerComponent,
+    RegisterComponent,
     ProductComponent
   ],
   imports: [

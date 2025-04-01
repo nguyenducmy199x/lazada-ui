@@ -4,6 +4,7 @@ import {calendar} from "../../../../vendors/moment/moment";
 import {Product} from "../../../models/product";
 import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import {PageProductRequest} from "../../../models/page-product-request";
+import {environment} from "../../../environments/environment.prod";
 
 @Component({
   selector: 'app-product',
@@ -25,8 +26,8 @@ export class ProductComponent implements OnInit {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
   }
 
-  electronicDeviceProductsUrl: string = "http://localhost:8082/api/v1/product/get-products-by-category";
-  pagingationUrl: string = "http://localhost:8082/api/v1/product/get-product-by-title-and-by-paging-number";
+  electronicDeviceProductsUrl: string = environment.apiUrl + "/v1/product/get-products-by-category";
+  pagingationUrl: string = environment.apiUrl + "/v1/product/get-product-by-title-and-by-paging-number";
 
   private product: Product | undefined;
 

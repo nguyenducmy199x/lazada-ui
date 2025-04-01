@@ -5,21 +5,31 @@
       <img src="assets/images/lazada-logo.png">
       <br/>
       <form  (ngSubmit)="onSubmit()">
-        <p style="color: red;font-family:arial;font-size:14px;">{{ loginwarning }}</p>
+<!--        <p style="color: red;font-family:arial;font-size:14px;">{{ loginwarning }}</p>-->
         <label  class="form-label">Username</label>
         <!--/*@thymesVar id="username" type=""*/-->
         <input  type="text" [(ngModel)]="username" name="username" class="form-control" aria-describedby="helpId">
         <br/><br/>
+
+        <label  class="form-label">Email</label>
+        <input type="email" [(ngModel)]="email" name="email" class="form-control" aria-describedby="helpId">
+        <br/><br/>
+
         <label  class="form-label">Password</label>
         <!--/*@thymesVar id="password" type=""*/-->
         <input type="password" [(ngModel)]="password" name="password" class="form-control" aria-describedby="helpId">
         <br/><br/>
+        <label  class="form-label">Re type Password</label>
+        <!--/*@thymesVar id="password" type=""*/-->
+        <input type="password"  name="retypepassword" class="form-control" aria-describedby="helpId">
+        <br/><br/>
+
         <button type="submit" style="border-radius:30px;width:100%"class="btn btn-primary">Submit</button>
       </form>
       <br>
       <div class="hr"></div>
       <div class="foot-lnk">
-        <a href="/register">Đăng kí tài khoản </a>
+        <a href="/Register">Đăng kí tài khoản </a>
         <br>
         <br>
         <a href="/ForgotPassword">Quên mật khẩu</a>

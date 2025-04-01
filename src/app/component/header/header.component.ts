@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ArrayType} from "@angular/compiler";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Authen} from "../../../models/authen";
+import {environment} from "../../../environments/environment.prod";
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
   searchReference : string[] | undefined;
   constructor(private http : HttpClient) { }
 
-  searchUrl = "http://localhost:8082/api/v1/product/search-by-product-title";
+  searchUrl = environment.apiUrl +  "/api/v1/product/search-by-product-title";
+  username = localStorage.getItem('username');
 
   ngOnInit(): void {
   }

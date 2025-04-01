@@ -1,10 +1,16 @@
 <div id="header">
 
-    <ul>
-      <li><a href="/login">LOGIN</a></li>
-      <li><a href="/signup">SIGNUP</a></li>
-      <li><a href="/changelanguage">CHANGE LANGUAGE</a></li>
-    </ul>
+  <ul>
+    <li *ngIf="username; else notLoggedIn">
+      Welcome , {{ username }}
+    </li>
+    <li><a href="/login">Logout</a></li>
+    <ng-template #notLoggedIn>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Register</a></li>
+    </ng-template>
+    <li><a href="/changelanguage">Change lanquage</a></li>
+  </ul>
 
 
   <div id="sub-header">
@@ -16,7 +22,7 @@
             <li style="list-style: none; float: none;" *ngFor="let item of searchReference">{{item}}</li>
           </ul>
         </li>
-        <li ><button style="background-color: white;border-style: hidden" type="submit"><img style="background-color: transparent;margin-top: 5px;height: 45px;width: 65px" src="/assets/images/search-button.png"></button></li>
+        <li style="margin-left: -55px"><button style="background-color: white;border-style: hidden" type="submit"><img style="background-color: transparent;margin-top: 5px;height: 45px;width: 65px" src="assets/images/resized_image.png"></button></li>
       </ul>
     </form>
 

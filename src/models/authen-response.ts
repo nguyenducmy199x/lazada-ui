@@ -1,17 +1,16 @@
 export class AuthenResponse {
-  private code: string;
-  private object: any;
-  private status: string | undefined
+  token: string;
+  code: string;
+  status: string | undefined
 
   constructor(private res: any) {
     this.code = res.code;
-    this.object = res.object.toString();
+    this.token = res.token;
     this.status = res.status;
   }
+
   get getJwtToken():string{
-    return <string>this.object;
+    return <string>this.token;
   }
-  get getCode():string{
-    return <string>this.code;
-  }
+
 }
