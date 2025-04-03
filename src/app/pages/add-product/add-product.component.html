@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div>
+  <app-side-menu></app-side-menu>
+  <div class="col-10 page" id="pages">
+    <h1>Add Product</h1>
+<div>
+    <form style="margin-left: 300px" (ngSubmit)="onSubmit()">
+      <p>Category</p>
+      <input type="text" [(ngModel)]="category" name="category"/>
+      <br><br>
+      <p>Title</p>
+      <input type="text" [(ngModel)]="title" name="category"/>
+      <br><br>
+      <p>Price</p>
+      <input type="text" [(ngModel)]="price" name="price"/>
+      <br><br>
+      <p>Describe</p>
+      <input type="text" [(ngModel)]="describe" name="describe"/>
+      <br><br>
+      <p>Image</p>
+      <input type="file"  (change)="this.onFileChanged($event)" [(ngModel)]="image" name="image"/>
+      <br><br>
+      <button type="submit">Submit</button>
+    </form>
+
+</div>
+  </div>
+</div>
+
