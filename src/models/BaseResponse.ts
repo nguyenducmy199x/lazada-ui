@@ -1,5 +1,5 @@
-export class BaseResponse<T> {
-  status!: number;
-  message!: string;
-  data!: T;
+export interface BaseResponse<T> {
+  code: string;
+  status: string;
+  data: T;
 }
