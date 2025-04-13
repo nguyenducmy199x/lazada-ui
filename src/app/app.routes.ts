@@ -9,8 +9,7 @@ import { LazadaComponent } from './pages/lazada/lazada.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  // { path: 'home', component: HomeComponent, canActivate: [authGuard] },
-  { path: 'home', component: HomeComponent},
+  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
   { path: 'add-product', component: AddProductComponent, canActivate: [authGuard] },
   { path: 'edit-product', component: EditProductComponent, canActivate: [authGuard] },
