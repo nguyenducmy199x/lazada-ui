@@ -2,30 +2,24 @@
 FROM node:20 AS build
 WORKDIR /app
 
+# Sao chép file package.json và cài đặt các dependency
 COPY package*.json ./
 RUN npm install
 
+# Sao chép toàn bộ mã nguồn vào trong container
 COPY . .
+
+# Build ứng dụng Angular với cấu hình production
 RUN npm run build -- --configuration=production --output-path=dist/mylazada --base-href=/
-RUN echo "✅ Listing dist folder:" && ls -la dist/mylazada
 
 # 👉 Serve Stage
-FROM nginx:alpine
+FROM nginx:latest
 
-# Copy Angular dist từ stage build
+# Sao chép các file đã build từ Build Stage vào thư mục của Nginx
 COPY --from=build /app/dist/mylazada /usr/share/nginx/html
 
-# Xóa default config
-RUN rm /etc/nginx/conf.d/default.conf
+# Mở port 80 cho Nginx
+EXPOSE 80
 
-# Copy các file cấu hình nginx tùy môi trường
-COPY nginx/default.prod.conf /etc/nginx/templates/default.prod.conf
-COPY nginx/default.dev.conf /etc/nginx/templates/default.dev.conf
-
-# Copy entrypoint script
-COPY nginx/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-# Entrypoint tự động chọn config theo biến môi trường ENV
-ENTRYPOINT ["/entrypoint.sh"]
+# Chạy Nginx trong chế độ không daemon
 CMD ["nginx", "-g", "daemon off;"]
