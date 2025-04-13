@@ -1,0 +1,108 @@
+.header {
+  background-color: white;
+  padding: 15px 0;
+}
+
+.header .logo img {
+  height: 40px;
+}
+
+.search-bar input {
+  border-radius: 20px;
+  padding: 10px;
+  width: 250px; /* Điều chỉnh kích thước input */
+}
+
+.search-bar button {
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.header-icons a {
+  text-decoration: none;
+  color: black;
+  margin-left: 15px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.header-icons a i {
+  margin-right: 5px;
+  float: right;
+}
+
+.header-icons a:hover {
+  color: #007BFF; /* Thêm hiệu ứng hover cho các icon */
+}
+
+.cart-count {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 12px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+
+
+.header .logo img {
+  height: 40px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-left: 10px; /* Thụt vào từ bên trái */
+  margin: 0;
+}
+
+
+.logo a {
+  display: block; /* Đảm bảo liên kết có chiều rộng */
+}
+.logo {
+  margin-left: 1%; /* Thụt vào một chút từ bên trái */
+}
+
+.logo img {
+  max-width: 100%;
+}
+
+
+
+.header-icons {
+  gap: 16px;
+}
+
+.account-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f0f0f0;
+  border: 1px solid #007bff;
+  color: #007bff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #007bff;
+  color: #fff;
+}

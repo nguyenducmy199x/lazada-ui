@@ -1,0 +1,57 @@
+<div style="z-index: 0" class="wrapper">
+  <br /><br /><br />
+  <div class="product">
+    <div><h4>Electronic Device</h4></div>
+    <br /><br />
+
+    <div class="products-container">
+      <div class="item" *ngFor="let item of displayedProducts">
+        <ul>
+          <li>
+            <div class="item-image">
+              <img style="height: 225px; width: 225px" [src]="item.image" />
+            </div>
+          </li>
+          <li>
+            <div class="item-title">
+              <p>{{ item.title }}</p>
+            </div>
+          </li>
+          <li>
+            <div class="item-price">
+              <p>Price: {{ item.price }} VND</p>
+            </div>
+          </li>
+          <li>
+            <div class="item-orders">
+              <p>Total Orders: 500</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br /><br />
+    <!-- Pagination -->
+    <div class="pagination">
+      <ul>
+        <li>
+          <!-- Previous Page -->
+          <a href="#" (click)="choosePage(currentPage - 1); $event.preventDefault()" [class.disabled]="currentPage === 0">&laquo;</a>
+        </li>
+
+        <li *ngFor="let i of [].constructor(totalPages); let index = index">
+          <!-- Page Numbers -->
+          <a href="#" (click)="choosePage(index); $event.preventDefault()" [class.active]="index === currentPage">
+            {{ index + 1 }}
+          </a>
+        </li>
+
+        <li>
+          <!-- Next Page -->
+          <a href="#" (click)="choosePage(currentPage + 1); $event.preventDefault()" [class.disabled]="currentPage === totalPages - 1">&raquo;</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <br /><br /><br />
+</div>

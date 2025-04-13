@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import { AlertComponent } from './services/alert/alert.component';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [RouterModule, AlertComponent]
 })
 export class AppComponent {
-  title = 'mylazada';
+  title = 'angular-partner-portal';
 }
