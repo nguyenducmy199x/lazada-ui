@@ -12,7 +12,7 @@
 
 # run trên server 
 # docker run -d --name mylazada --network=my-network -p 4200:80 myn199x/mylazada:latest
-# copy file nginx từ folder project vào thư mục /etc/nginx/nginx.conf 
+# remove hết "#" và copy file nginx từ folder project vào thư mục /etc/nginx/nginx.conf (file local để lưu chứ không để chạy , chạy trên server)
 
 # copy files index.html... từ folder dist/mylazada (local) vào thư mục trên server /usr/share/nginx/html
 #  scp -r dist/mylazada root@103.27.239.229:/usr/share/nginx/html/
