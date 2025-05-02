@@ -19,13 +19,22 @@
 [//]: # (#  scp -r dist/mylazada root@103.27.239.229:/usr/share/nginx/html/)
 # aws
 # scp -i "D:\aws\mylazada.pem" -r dist/mylazada ubuntu@52.62.99.94:/home/ubuntu/
+# run trên server để copy 
+# sudo rm -rf /usr/share/nginx/html/*
+# sudo mv /home/ubuntu/mylazada/* /usr/share/nginx/html/
+
 
 
 # đảm bảo /usr/share/nginx/html/mylazada/browser có files mới copy từ local 
-location / {
-         root /usr/share/nginx/html/mylazada/browser;
-         index index.html;
-         try_files $uri $uri/ /index.html;
-     }
+# chỉnh sửa file config nginx
+# sudo nano /etc/nginx/sites-available/default
+# or
+# sudo nano /etc/nginx/nginx.conf
+
+# location / {
+#         root /usr/share/nginx/html/mylazada/browser;
+#         index index.html;
+#         try_files $uri $uri/ /index.html;
+#     }
 
 # sudo systemctl restart  nginx - > run web

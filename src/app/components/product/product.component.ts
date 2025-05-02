@@ -30,7 +30,6 @@ export class ProductComponent implements OnInit {
   totalPages: number = 0; // Khởi tạo totalPages
   displayedProducts: ProductImg[] | undefined = []; // Khởi tạo displayedProducts
 
-  electronicDeviceProductsUrl: string =  environment.apiUrl + "/v1/product/get-products-by-category";
   pagingationUrl: string = environment.apiUrl + "/v1/product/get-product-by-title-and-by-paging-number";
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private router: Router) { }
@@ -48,10 +47,10 @@ export class ProductComponent implements OnInit {
   choosePage(page: number) {
     if (page >= 0 && page < this.totalPages) {
       this.currentPage = page;
-  
+
       this.pageOnClick = this.currentPage.toString();
       localStorage.setItem("pageOnClick", this.pageOnClick);
-  
+
       this.getPageProducts(this.pageOnClick);
     }
   }
@@ -90,7 +89,7 @@ export class ProductComponent implements OnInit {
           } else if (item.image?.startsWith('iVBORw')) {
             imageType = 'png';
           }
-    
+
           let imageUrl = item.image
           ? `data:image/${imageType};base64,${item.image}`
           : 'assets/default-image.jpg';
@@ -107,7 +106,7 @@ export class ProductComponent implements OnInit {
   updatePagination() {
     this.displayedProducts = this.products || [];
   }
-  
+
 }
 
 function isTokenExpired(token: string): boolean {
