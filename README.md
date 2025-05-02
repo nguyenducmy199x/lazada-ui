@@ -15,7 +15,12 @@
 # copy file nginx từ folder project vào thư mục /etc/nginx/nginx.conf 
 
 # copy files index.html... từ folder dist/mylazada (local) vào thư mục trên server /usr/share/nginx/html
-#  scp -r dist/mylazada root@103.27.239.229:/usr/share/nginx/html/
+# máy vps
+[//]: # (#  scp -r dist/mylazada root@103.27.239.229:/usr/share/nginx/html/)
+# aws
+# scp -i "D:\aws\mylazada.pem" -r dist/mylazada ubuntu@52.62.99.94:/home/ubuntu/
+
+
 # đảm bảo /usr/share/nginx/html/mylazada/browser có files mới copy từ local 
 location / {
          root /usr/share/nginx/html/mylazada/browser;
