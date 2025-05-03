@@ -38,8 +38,12 @@ export class LoginComponent implements OnInit {
       
       sessionStorage.setItem('access_token', res.data);
       if (res.code === '200') {
-        this.router.navigate(['home']);
         this.username ? sessionStorage.setItem('username', this.username) : null;
+        if(this.username === 'admin'){
+          this.router.navigate(['add-product']);
+          return; 
+        }
+        this.router.navigate(['home']);
 
       }else{
         this.router.navigate(['login'])

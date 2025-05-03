@@ -1,61 +1,72 @@
-
-#pages{
-  width: 1000px;
-  margin-top: 20px;
-  float: left;
-  color: black;
+/* Tiêu đề */
+.form-title {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 30px;
+  color: #333;
 }
-/* Form container style */
+
+/* Cảnh báo hoặc thông báo */
+.form-warning {
+  color: red;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Form container */
 .form-container {
-  width: 50%; /* Adjust the width as needed */
-  margin: 0 auto; /* Center the form */
-  padding: 20px;
-  background-color: #f9f9f9; /* Light background color */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a more modern look */
+  width: 100% !important;
+  max-width: 700px;
+  margin: 30px auto;
+  float: left;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Form group for each input and label */
+/* Form group spacing */
 .form-group {
-  margin-bottom: 15px; /* Add space between form groups */
+  margin-bottom: 20px;
 }
 
-/* Label styling */
+/* Label */
 .form-group label {
   display: block;
-  font-weight: bold;
-  margin-bottom: 5px; /* Space between label and input */
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
 }
 
-/* Input field styling */
+/* Input / textarea */
 .form-input {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
+  padding: 10px 12px;
   font-size: 14px;
-  border: 1px solid #ccc; /* Light border */
-  border-radius: 4px; /* Rounded input borders */
-  box-sizing: border-box; /* Ensure padding is inside the width */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
 }
 
-/* Button styling */
+.form-input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Submit button */
 .submit-btn {
-  background-color: #4CAF50; /* Green background */
+  background: linear-gradient(to right, #4CAF50, #43a047);
   color: white;
-  padding: 10px 20px;
+  padding: 12px;
   font-size: 16px;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  width: 100%; /* Make the button take full width */
+  transition: background 0.3s ease;
+  width: 100%;
 }
 
-/* Button hover effect */
 .submit-btn:hover {
-  background-color: #45a049; /* Darker green on hover */
-}
-
-/* Optional: Add a margin to the button */
-.submit-btn:focus {
-  outline: none; /* Remove outline */
+  background: linear-gradient(to right, #43a047, #388e3c);
 }
