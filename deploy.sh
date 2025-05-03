@@ -1,26 +1,17 @@
-# 👉 Build Stage
-FROM node:20 AS build
-WORKDIR /app
+#!/bin/bash
 
-# Sao chép file package.json và cài đặt các dependency
-COPY package*.json ./
-RUN npm install
-
-# Sao chép toàn bộ mã nguồn vào trong container
-COPY . .
-
-# Build ứng dụng Angular với cấu hình production
-RUN npm run build -- --configuration=production --output-path=dist/mylazada --base-href=/
-
-
-# 👉 Serve Stage
-FROM nginx:latest
-
-# Sao chép các file đã build từ Build Stage vào thư mục của Nginx
-COPY --from=build /app/dist/mylazada /usr/share/nginx/html
-
-# Mở port 80 cho Nginx
-EXPOSE 80
-
-# Chạy Nginx trong chế độ không daemon
-CMD ["nginx", "-g", "daemon off;"]
+# Dừng script nếu có lỗi
+set -e
+# 1. Build Angular app (hoặc bỏ qua nếu đã build rồi)
+echo "🔧 Building Angular app..."
+ng build
+# 2. Build Docker image
+echo "🐳 Building Docker image..."
+docker build -t mylazada .
+# 3. Gắn thẻ image
+echo "🏷️ Tagging image..."
+docker tag mylazada myn199x/mylazada:latest
+# 4. Push image lên Docker Hub
+echo "📤 Pushing to Docker Hub..."
+docker push myn199x/mylazada:latest
+echo "✅ Done!"

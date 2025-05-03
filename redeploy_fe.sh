@@ -1,26 +1,23 @@
-# 👉 Build Stage
-FROM node:20 AS build
-WORKDIR /app
+#!/bin/bash
 
-# Sao chép file package.json và cài đặt các dependency
-COPY package*.json ./
-RUN npm install
+# Dừng nếu có lỗi
+set -e
 
-# Sao chép toàn bộ mã nguồn vào trong container
-COPY . .
+# ========== [1] Dừng và xóa container cũ ==========
+echo "🛑 Stopping and removing old container..."
+docker stop mylazada || true
+docker rm mylazada || true
 
-# Build ứng dụng Angular với cấu hình production
-RUN npm run build -- --configuration=production --output-path=dist/mylazada --base-href=/
+# ========== [2] Xóa các images cũ ==========
+echo "🧹 Removing old Docker images..."
+docker rmi myn199x/mylazada:latest || true
 
+# ========== [3] Pull image mới từ Docker Hub ==========
+echo "📥 Pulling latest image from Docker Hub..."
+docker pull myn199x/mylazada:latest
 
-# 👉 Serve Stage
-FROM nginx:latest
+# ========== [4] Chạy lại container với cấu hình mới ==========
+echo "🚀 Running new container..."
+docker run -d --name mylazada --network=my-network -p 4200:80 myn199x/mylazada:latest
 
-# Sao chép các file đã build từ Build Stage vào thư mục của Nginx
-COPY --from=build /app/dist/mylazada /usr/share/nginx/html
-
-# Mở port 80 cho Nginx
-EXPOSE 80
-
-# Chạy Nginx trong chế độ không daemon
-CMD ["nginx", "-g", "daemon off;"]
+echo "✅ Redeploy complete! New container is running."
