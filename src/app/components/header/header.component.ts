@@ -11,6 +11,7 @@ import { SearchComponent } from "../search/search.component";
   imports: [CommonModule, SearchComponent]
 })
 export class HeaderComponent implements OnInit {
+  public account: string | undefined;
 
   constructor(private authService: AuthService) { }
 
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
   }
   ngOnInit(): void {
+    this.account = sessionStorage.getItem('username') ?? undefined;
   }
 
 }

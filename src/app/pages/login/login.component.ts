@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('access_token', res.data);
       if (res.code === '200') {
         this.router.navigate(['home']);
+        this.username ? sessionStorage.setItem('username', this.username) : null;
+
       }else{
         this.router.navigate(['login'])
         this.loginwarning = 'Login Failed , Please try again';

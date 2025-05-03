@@ -10,8 +10,9 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class BannerComponent implements OnInit {
   images  = [
-    'images/slider6.jpg',
-    'images/slider6.jpg',
+    'images/slider1.jpg',
+    'images/slider2.jpg',
+    'images/slider4.jpg',
     'images/slider6.jpg'
   ];
   currentIndex = 0;
