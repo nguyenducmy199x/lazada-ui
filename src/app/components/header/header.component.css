@@ -1,108 +1,60 @@
+/* header.css */
 .header {
-  background-color: white;
-  padding: 15px 0;
+  background-color: #f8f8f8; /* Màu nền header nhạt */
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.header .logo img {
-  height: 40px;
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Giới hạn chiều rộng container */
+  margin: 0 auto;
 }
 
-.search-bar input {
-  border-radius: 20px;
-  padding: 10px;
-  width: 250px; /* Điều chỉnh kích thước input */
-}
-
-.search-bar button {
-  border-radius: 20px;
-  padding: 10px 20px;
+.header-icons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
 .header-icons a {
+  color: #333;
   text-decoration: none;
-  color: black;
-  margin-left: 15px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
+  margin-right: 15px;
 }
 
 .header-icons a i {
   margin-right: 5px;
-  float: right;
-}
-
-.header-icons a:hover {
-  color: #007BFF; /* Thêm hiệu ứng hover cho các icon */
-}
-
-.cart-count {
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 8px;
-  font-size: 12px;
-  position: absolute;
-  top: -5px;
-  right: -5px;
-}
-
-
-
-.header .logo img {
-  height: 40px;
-}
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding-left: 10px; /* Thụt vào từ bên trái */
-  margin: 0;
-}
-
-
-.logo a {
-  display: block; /* Đảm bảo liên kết có chiều rộng */
-}
-.logo {
-  margin-left: 1%; /* Thụt vào một chút từ bên trái */
-}
-
-.logo img {
-  max-width: 100%;
-}
-
-
-
-.header-icons {
-  gap: 16px;
-}
-
-.account-link {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .logout-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background-color: #f0f0f0;
-  border: 1px solid #007bff;
-  color: #007bff;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-weight: 500;
+  background-color: #dc3545; /* Màu đỏ cho nút đăng xuất */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 14px;
 }
 
-.logout-btn:hover {
-  background-color: #007bff;
-  color: #fff;
+.logout-btn i {
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-icons {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .header-icons a {
+    margin-right: 10px;
+  }
 }
