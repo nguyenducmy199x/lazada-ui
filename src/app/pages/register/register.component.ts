@@ -1,10 +1,11 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AuthenResponse } from '../../models/authen-response';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
-import { Authen } from '../../models/authen';
+import { RegisterRequest } from '../../models/register-request';
+import { BaseResponse } from '../../models/base-response';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
   selector: 'app-register',
@@ -23,10 +24,9 @@ export class RegisterComponent  implements OnInit {
   public retypePassword: string | undefined;
   public response: string | null | undefined;
   public loginwarning: string | null | undefined;
-  authenResponse: AuthenResponse | null | undefined;
-  public authenticateUrl: string =  environment.apiUrl + "/v1/authen/login";
+  public registerUrl: string =  environment.apiUrl + "/v1/authen/register";
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private alertService: AlertService) {
   }
 
 
@@ -34,22 +34,21 @@ export class RegisterComponent  implements OnInit {
   }
 
   public onSubmit() {
-    const authen: Authen = new Authen(this.username, this.password);
-    // @ts-ignore
-    this.http.post<BaseResponse<any>>(this.authenticateUrl, authen).subscribe((res: BaseResponse<any>) => {
-      
-      sessionStorage.setItem('access_token', res.data);
-      if (res.code === '200') {
-        this.username ? sessionStorage.setItem('username', this.username) : null;
-        if(this.username === 'admin'){
-          this.router.navigate(['add-product']);
-          return; 
-        }
-        this.router.navigate(['home']);
+    if (this.password !== this.retypePassword) {
+      this.loginwarning = 'Retype password does not match password.';
+      return;
+    }
 
+    const register: RegisterRequest = new RegisterRequest(this.username, this.password, this.email);
+    // @ts-ignore
+    this.http.post<BaseResponse<any>>(this.registerUrl, register).subscribe((res: BaseResponse<any>) => {
+      
+      if (res.code === '200') {
+        this.alertService.show('Register successfully!', 'success');
+        this.router.navigate(['login']);
       }else{
-        this.router.navigate(['login'])
-        this.loginwarning = 'Login Failed , Please try again';
+        this.alertService.show('Register failed! ' + res.data, 'error');
+        this.router.navigate(['register'])
       }
     });
   }

@@ -63,7 +63,7 @@ export class AddProductContentComponent {
 
       },
       error: (error) => {
-        this.alertService.show('Product added not successfully!', 'success');
+        this.alertService.show('Product added not failed!', 'success');
       }
     });
   }
