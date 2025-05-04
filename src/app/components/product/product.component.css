@@ -1,108 +1,342 @@
-.product {
-  width: 80%;
-  color: black;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
+/* style.css (hoặc tên file CSS chính của bạn) */
+
+/* CSS chung cho toàn trang (nếu có) */
+body {
+  font-family: sans-serif; /* Font chữ mặc định */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Màu nền trang nhạt */
+  color: #333; /* Màu chữ mặc định */
 }
-.item ul li{
-  list-style: none;
-  margin-right: 50px;
-}
-.wrapper{
+
+.wrapper {
   float: left;
-  margin-left: -40px;
+  margin-left: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-top: 20px; /* Thêm khoảng trắng phía trên nội dung chính */
+  padding-bottom: 20px; /* Thêm khoảng trắng phía dưới nội dung chính */
 }
 
-/*-----Pagination-----*/
-.pagination ul{
-  margin-left: auto;
-}
-.pagination ul li{
-  list-style: none;
-  float: left;
-  border: 1px solid #ddd;
-
-}
-.pagination a {
+.product {
+  width: 90%; /* Tăng chiều rộng container sản phẩm */
   color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  border: 1px solid #ddd;
-  font-size: 22px;
+  margin: 20px auto; /* Căn giữa và thêm khoảng trắng trên dưới */
+  display: flex;
+  flex-direction: column;
 }
-.pagination a:hover:not(.active) {background-color: #ddd;}
-
-.pagination a.active {
-  background-color: #4CAF50;
-  color: white;
-  border: 1px solid #4CAF50;
-}
-
-/*-----Pagination-----*/
-
-
 
 /* Container chứa danh sách sản phẩm */
-
 .products-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around; /* Căn đều các item trên màn hình */
   flex-wrap: wrap;
   gap: 20px;
 }
 
 .item {
-  width: 300px;
+  width: calc(33.33% - 20px); /* Hiển thị khoảng 3 cột trên màn hình lớn, trừ đi khoảng cách */
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 10px;
+  box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước item */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Căn giữa nội dung theo chiều ngang */
+  text-align: center; /* Căn giữa chữ bên trong item */
+  transition: transform 0.3s ease-in-out; /* Hiệu ứng hover mượt mà */
 }
 
-
 .item:hover {
-  transform: translateY(-10px); /* Hiệu ứng di chuyển lên khi hover */
+  transform: translateY(-5px); /* Hiệu ứng di chuyển lên khi hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ khi hover */
+}
+
+.item-image {
+  width: 100%; /* Hình ảnh chiếm toàn bộ chiều rộng của item */
+  margin-bottom: 10px;
 }
 
 .item-image img {
-  max-width: 100%; /* Đảm bảo hình ảnh không vượt quá kích thước container */
-  height: auto;
-  display: block; /* Loại bỏ khoảng trắng không mong muốn dưới hình ảnh */
-  margin: 0 auto; /* Căn giữa hình ảnh */
+  width: 100%; /* Hình ảnh bên trong cũng chiếm toàn bộ chiều rộng */
+  height: auto; /* Giữ tỷ lệ khung hình */
+  display: block; /* Loại bỏ khoảng trắng thừa dưới hình ảnh */
 }
 
-.item-title p,
-.item-price p,
-.item-orders p {
+.item ul {
+  list-style: none;
+  padding: 0;
   margin: 0;
+  width: 100%; /* Đảm bảo ul chiếm hết chiều rộng item */
+}
+
+.item ul li {
+  margin: 5px 0;
   font-size: 16px;
   color: #333;
+  text-align: center;
 }
 
 .item-title p {
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-.item-price p,
-.item-orders p {
-  margin-bottom: 10px;
+.item-price p {
+  color: #007bff; /* Màu giá nổi bật */
 }
 
-/* Responsive: Điều chỉnh cho các màn hình nhỏ */
-@media (min-width: 768px) {
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.pagination ul li {
+  margin: 0 5px;
+}
+
+.pagination a {
+  color: black;
+  padding: 8px 12px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #eee;
+}
+
+.pagination a.active {
+  background-color: #F57224;
+  color: white;
+  border-color: #F57224;
+}
+
+.pagination a.disabled {
+  color: #ccc;
+  pointer-events: none;
+  cursor: default;
+  background-color: #f9f9f9;
+  border-color: #eee;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
   .item {
-    width: 48%; /* Hiển thị 2 cột cho các màn hình từ 768px trở lên */
+    width: calc(50% - 20px); /* Hiển thị 2 cột trên màn hình vừa */
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 767px) {
   .item {
-    width: 30%; /* Hiển thị 3 cột cho các màn hình từ 1024px trở lên */
+    width: calc(100% - 20px); /* Hiển thị 1 cột trên màn hình nhỏ */
+  }
+}
+
+/* Các style cho header, sidebar và carousel (nếu bạn muốn tích hợp vào một file) */
+/* Bạn có thể copy nội dung từ header.css, sidebar.css, carousel.css vào đây */
+
+/* Ví dụ tích hợp header */
+.header {
+  background-color: #f8f8f8;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.header-icons a {
+  color: #333;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.header-icons a i {
+  margin-right: 5px;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn i {
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-icons {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .header-icons a {
+    margin-right: 10px;
+  }
+}
+
+/* Ví dụ tích hợp sidebar */
+.sidebar {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 220px;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar .logo {
+  margin-bottom: 20px;
+}
+
+.sidebar .logo a {
+  display: block;
+}
+
+.sidebar .logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.sidebar .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .menu li {
+  margin-bottom: 10px;
+}
+
+.sidebar .menu li a {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .menu li a img {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar .menu li a:hover {
+  background-color: #f0f0f0;
+  color: #ff9f00;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 10px;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .sidebar .logo {
+    display: none;
+  }
+
+  .sidebar .menu {
+    display: flex;
+    margin-left: 0;
+  }
+
+  .sidebar .menu li {
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+}
+
+/* Ví dụ tích hợp carousel */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 60px;
+  margin-left: 220px;
+}
+
+.carousel-slide {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+  width: 100%;
+  display: block;
+}
+
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-prev {
+  left: 10px;
+}
+
+.carousel-next {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    margin-top: 15px;
+    margin-left: 0;
   }
 }
